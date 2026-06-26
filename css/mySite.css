@@ -1,0 +1,259 @@
+/* --- Reset and Base --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.fantasy-body {
+    background-image: url('../images/pexels-3d-render-1058120333-33441868.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: #1a1a1a;
+}
+
+.full-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+
+@keyframes arcaneFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(0.5deg); } /* Gentle lift and tilt */
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.glass-panel {
+    display: flex;
+    flex-direction: column; /* Keeps the profile alone at the top */
+    align-items: center;
+    gap: 40px; /* Space between the profile and the links grid */
+    
+    background: linear-gradient(135deg, rgba(7, 7, 19, 0.39) 0%, rgba(15, 10, 8, 0.85) 100%);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    border: 1px solid rgba(35, 73, 177, 0.25); 
+    border-top: 1px solid rgba(43, 27, 134, 0.5); 
+    border-radius: 24px;
+    padding: 45px 35px;
+    width: 100%;
+    
+   
+    max-width: 950px; 
+    
+    box-shadow: 0 20px 40px rgba(41, 41, 43, 0.103), 
+                inset 0 0 20px rgba(183, 183, 196, 0.904);
+    animation: arcaneFloat 7s ease-in-out infinite; 
+    
+}
+/* --- Profile Section --- */
+.profile-card {
+    text-align: center;
+   
+    margin-bottom: 0;
+    min-width: 300px;
+}
+
+.profile-pic {
+    width: 250px; 
+    height: 250px;
+    border-radius: 50%;
+    border: 3px solid #152b72; 
+    box-shadow: 0 0 25px rgba(39, 29, 128, 0.527);
+    margin-bottom: 15px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(111, 111, 170, 0.5);
+}
+
+.profile-card h1 {
+    margin: 0 0 5px 0;
+    color: #fcf6e8;
+    font-family: 'Georgia', serif; 
+    font-size: 2em;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.subtitle {
+    margin: 0;
+    color: #c9b08b;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+
+.link-container {
+    display: grid;
+    /* This creates exactly 2 columns. If you ever want 3, just change the '2' to a '3' */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px; /* Space between the grid items */
+    width: 100%;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    background: rgba(148, 142, 142, 0.753); 
+    border: 1px solid #d4c7c7;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+.nav-button:hover {
+    background: rgba(18, 19, 53, 0.85);
+    border-color: #542097;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+    color: #1de4c9;
+}
+
+.button-icon {
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%;
+    margin-right: 20px;
+    background: #0d0906;
+    object-fit: cover;
+    border: 1px solid rgba(190, 190, 196, 0.3);
+    /* CHANGED: Prevents the large icon from squishing in the grid */
+    flex-shrink: 0; 
+}
+
+/* --- Inactive State  */
+.nav-button.inactive {
+    opacity: 0.55;
+    cursor: not-allowed;
+    border-style: dashed;
+    border-color: #5a4b35;
+    background: rgba(30, 20, 12, 0.4);
+}
+
+.nav-button.inactive:hover {
+    transform: none;
+    box-shadow: none;
+    background: rgba(30, 20, 12, 0.4);
+    border-color: #6b6c80;
+    color: #fcf6e8;
+}
+
+
+
+/* --- Mobile Responsiveness THIS IS FOR PHONES DONT TOUCH --- */
+@media (max-width: 850px) {
+    
+    .glass-panel {
+         animation: none;       
+        padding: 20px 15px; 
+        gap: 15px; 
+         backdrop-filter: blur(4px);        /* was 10px */
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    
+    .profile-pic {
+        width: 110px; 
+        height: 110px;
+        margin-bottom: 10px;
+        border-width: 2px; 
+    }
+
+
+    .profile-card h1 {
+        font-size: 1.4em; 
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 0.85em;
+    }
+
+    
+    .link-container {
+        grid-template-columns: 1fr; 
+        gap: 10px; 
+    }
+
+    /* Makes the buttons themselves slimmer */
+    .nav-button {
+        padding: 6px 15px; 
+    }
+
+    /* Shrinks the icons significantly so they don't stretch the button height */
+    .button-icon {
+        width: 45px; 
+        height: 45px;
+        margin-right: 15px; 
+    }
+
+    /* Slightly smaller button text */
+    .button-text {
+        font-size: 0.9em;
+    }
+   
+}
+
+
+.wind-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Crucial: Lets you click buttons through the wind */
+    z-index: 0;
+    overflow: hidden;
+}
+
+.mote {
+    position: absolute;
+    /* This creates a tiny, soft glowing orb */
+    width: 4px;
+    height: 4px;
+    background: #e7e6e3;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(187, 172, 126, 0.6);
+    opacity: 0;
+    /* The wind animation */
+    animation: windBlow linear infinite;
+}
+
+
+@keyframes windBlow {
+    0% { transform: translate(-10vw, 110vh) scale(0.5); opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translate(110vw, -10vh) scale(1.5); opacity: 0; }
+}
+
+
+.mote:nth-child(1) { left: 10%; animation-duration: 7s; animation-delay: 0s; }
+.mote:nth-child(2) { left: 30%; animation-duration: 5s; animation-delay: 2s; width: 6px; height: 6px; }
+.mote:nth-child(3) { left: -5%; top: 40%; animation-duration: 8s; animation-delay: 1s; }
+.mote:nth-child(4) { left: 50%; animation-duration: 6s; animation-delay: 4s; width: 3px; height: 3px; }
+.mote:nth-child(5) { left: -10%; top: 70%; animation-duration: 5.5s; animation-delay: 3s; }
+.mote:nth-child(6) { left: 70%; animation-duration: 9s; animation-delay: 1.5s; }
+.mote:nth-child(7) { left: 20%; animation-duration: 6.5s; animation-delay: 5s; width: 5px; height: 5px; }
+.mote:nth-child(8) { left: -15%; top: 20%; animation-duration: 7.5s; animation-delay: 0.5s; }

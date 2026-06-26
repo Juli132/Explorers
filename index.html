@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabletop Haven</title>
+    <link rel="stylesheet" href="css/mySite.css" />
+</head>
+<body class="fantasy-body">
+    <div class="wind-container" aria-hidden="true">
+        <div class="mote"></div>
+        <div class="mote"></div>
+        <div class="mote"></div>
+        <div class="mote"></div>
+        <div class="mote"></div>
+        <div class="mote"></div>
+        <div class="mote"></div>
+        <div class="mote"></div>
+    </div>
+    <div class="full-wrapper">
+        
+        <div class="glass-panel">
+            <header id="hero">
+                <div class="profile-card">
+                    <img src="images/photomode_17102025_013504.png" alt="Friend" class="profile-pic" />
+                    <h1>Your name or username </h1>
+                    <p class="subtitle">Tabletop Creator & something something</p>
+                </div>
+            </header>
+
+            <!-- The JavaScript will inject the buttons here automatically -->
+            <main id="link-container" class="link-container">
+            </main>
+        </div>
+
+    </div>
+
+    <!-- The Link Configuration Script -->
+    <script>
+        // only edit this list!
+        const myLinks = [
+            {
+                name: "Watch the Stream",
+                url: "yoururlhere",
+                icon: "images/twitch.png",
+                active: true
+            },
+            {
+                name: "YouTube",
+                url: "yoururlhere",
+                icon: "images/photomode_17102025_013920.png",
+                active: true
+            },
+            {
+                name: "The world of Olvirs",
+                url: "thesiteurl",
+                icon: "images/photomode_17102025_013504.png",
+                active: false, // Change this to 'true' when ready to publish
+                inactiveText: "The world of Olvirs (In Progress)" 
+            },
+            {     name: "you can add the name here",
+                  url: "with the url!",
+                  icon: "the location of the images. make sure its in images folder, then right click the image and select relative path make sure the dash is '/' this way though",
+                  active: false,
+                  inactiveText: "this overrides the name. just a temporary thing you can delete",
+            }
+
+        ];
+
+        // This code builds the HTML dynamically : ) 
+        const container = document.getElementById('link-container');
+
+        container.innerHTML = myLinks.map(link => {
+            if (link.active) {
+                return `
+                    <a href="${link.url}" target="_blank" class="nav-button">
+                        <img src="${link.icon}" alt="${link.name}" class="button-icon" />
+                        <span class="button-text">${link.name}</span>
+                    </a>
+                `;
+            } else {
+                return `
+                    <div class="nav-button inactive">
+                        <img src="${link.icon}" alt="${link.name}" class="button-icon" />
+                        <span class="button-text">${link.inactiveText || link.name}</span>
+                    </div>
+                `;
+            }
+        }).join('');
+    </script>
+</body>
+</html>
