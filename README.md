@@ -1,1 +1,1 @@
-This is for my lovely friend. I had fun making it.
+This is for my friend. I had fun making it.
